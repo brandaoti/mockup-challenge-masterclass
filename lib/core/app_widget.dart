@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mockup_challenge_masterclass/core/core.dart';
+import 'package:mockup_challenge_masterclass/features/features.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -6,11 +8,10 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Master Class Mockup Project',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Container(),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutterando Masterclass',
+      theme: AppTheme.theme(),
+      home: const HomeScreen(),
     );
   }
 }
