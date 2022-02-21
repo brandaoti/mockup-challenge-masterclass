@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mockup_challenge_masterclass/core/core.dart';
 
+import '../../core/core.dart';
 import 'components/nav_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {

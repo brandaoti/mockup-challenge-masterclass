@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mockup_challenge_masterclass/core/core.dart';
+
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:mockup_challenge_masterclass/core/values/app_colors.dart';
+
+import '../../../core/core.dart';
 
 const Duration _duration = Duration(milliseconds: 100);
 

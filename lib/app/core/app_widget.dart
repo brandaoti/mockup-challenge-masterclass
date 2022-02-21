@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mockup_challenge_masterclass/core/core.dart';
-import 'package:mockup_challenge_masterclass/features/features.dart';
+
+import '../features/features.dart';
+import 'core.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
