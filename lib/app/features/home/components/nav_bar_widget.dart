@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../core/core.dart';
@@ -7,14 +6,19 @@ import '../../../core/core.dart';
 const Duration _duration = Duration(milliseconds: 100);
 
 class NavBarWidget extends StatefulWidget {
-  const NavBarWidget({Key? key}) : super(key: key);
+  final Function(int) onTap;
+
+  const NavBarWidget({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   State<NavBarWidget> createState() => _NavBarWidgetState();
 }
 
 class _NavBarWidgetState extends State<NavBarWidget> {
-  int _selectedIndex = 0;
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,18 +55,15 @@ class _NavBarWidgetState extends State<NavBarWidget> {
     String? title,
     int index = 0,
   }) {
-    final selectedIcon =
-        index == _selectedIndex ? AppColors.cardDark : Colors.transparent;
+    final selectedIcon = index == currentIndex
+        ? AppColors.cardBackgroundDark
+        : Colors.transparent;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _icons(
-          icon,
-          index,
-          selectedIcon,
-        ),
+        _icons(icon, index, selectedIcon),
         const SizedBox(height: 7.0),
         Text(
           title!,
@@ -75,9 +76,10 @@ class _NavBarWidgetState extends State<NavBarWidget> {
     );
   }
 
+  // ! Verificar se precisa criar um Class fora
   Widget _icons(Widget icon, int index, Color selectedIcon) {
     return GestureDetector(
-      onTap: () => setState(() => _selectedIndex = index),
+      onTap: () => widget.onTap(currentIndex = index),
       child: AnimatedContainer(
         duration: _duration,
         curve: Curves.linearToEaseOut,
