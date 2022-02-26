@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mockup_challenge_masterclass/app/core/values/values.dart';
 
-import 'components/activity_card_widget.dart';
+import 'components/card_widget.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({
@@ -14,7 +13,7 @@ class ActivitiesScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 3,
         itemBuilder: (context, index) {
-          return ActivityCardWidget();
+          return CardWidget();
         },
       ),
     );
