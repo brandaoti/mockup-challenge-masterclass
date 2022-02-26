@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../core/core.dart';
+import '../model/activity_card_item.dart';
 
 class ActivityCardWidget extends StatelessWidget {
-  const ActivityCardWidget({Key? key}) : super(key: key);
+  final ActivityCardItem activityCardItem;
+
+  const ActivityCardWidget({
+    Key? key,
+    required this.activityCardItem,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +25,28 @@ class ActivityCardWidget extends StatelessWidget {
             Container(
               height: 43.0,
               width: 43.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.primary,
                 image: DecorationImage(
-                  image: AssetImage(AppImages.iconDarkRunning),
+                  image: AssetImage(activityCardItem.image),
                 ),
+              ),
+            ),
+            Text(
+              activityCardItem.title,
+              style: const TextStyle(
+                color: AppColors.white,
+                fontSize: 16.0,
               ),
             ),
           ],
         ),
 
         // * Descrição
-        const Text(
-          'Estudos sobre animações implícitas e controladas, contendo 4 exercícios e 2 estudos.',
-          style: TextStyle(
+        Text(
+          activityCardItem.subtitle,
+          style: const TextStyle(
             color: AppColors.description,
           ),
           textAlign: TextAlign.left,
@@ -40,9 +54,22 @@ class ActivityCardWidget extends StatelessWidget {
 
         // fim
         Row(
-          mainAxisSize: MainAxisSize.min,
+          // mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Row(
+              children: const [
+                Icon(MdiIcons.github, size: 20.0),
+                SizedBox(width: 4.0),
+                Text(
+                  'Acessar código fonte',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.white,
+                  ),
+                ),
+              ],
+            ),
             ElevatedButton(
               child: const Text(
                 'Ver mais',
