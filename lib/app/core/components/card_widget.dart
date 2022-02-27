@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:mockup_challenge_masterclass/app/features/activities/components/activity_card_widget.dart';
-
-import '../../../core/core.dart';
+import '../core.dart';
 
 class CardWidget extends StatelessWidget {
   final Widget child;
+
   final double width;
   final double heigth;
+
   final Color cardBackgroundColor;
+
+  final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry padding;
 
   const CardWidget({
     Key? key,
@@ -16,6 +19,8 @@ class CardWidget extends StatelessWidget {
     this.heigth = 180,
     required this.child,
     this.cardBackgroundColor = AppColors.cardBackgroundDark,
+    this.margin = const EdgeInsets.symmetric(vertical: 8.0, horizontal: 14.0),
+    this.padding = const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
   }) : super(key: key);
 
   @override
@@ -23,8 +28,8 @@ class CardWidget extends StatelessWidget {
     return Container(
       width: width,
       height: heigth,
-      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 14.0),
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      margin: margin,
+      padding: padding,
       decoration: BoxDecoration(
         color: cardBackgroundColor,
         borderRadius: BorderRadius.circular(20.0), // !verificar borda

@@ -23,21 +23,43 @@ class ActivityCardWidget extends StatelessWidget {
         Row(
           children: [
             Container(
-              height: 43.0,
-              width: 43.0,
+              height: 36.0,
+              width: 36.0,
+              //! TODO, criar uma classe para as decorações
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.primary,
                 image: DecorationImage(
                   image: AssetImage(activityCardItem.image),
+                  scale: 1.2,
                 ),
               ),
             ),
+            const SizedBox(width: 8.0),
+            Expanded(
+              child: Text(
+                activityCardItem.title,
+                // TODO, criar também no Textstyle
+                style: const TextStyle(
+                  color: AppColors.white,
+                  fontSize: 16.0,
+                ),
+              ),
+            ),
+            // Spacer(),
+            const Text(
+              'Exercicios:', //! Criar como função
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 12.0,
+              ),
+            ),
+            const SizedBox(width: 8.0),
             Text(
-              activityCardItem.title,
+              '${activityCardItem.quantity ?? 0}', //! Criar como função
               style: const TextStyle(
                 color: AppColors.white,
-                fontSize: 16.0,
+                fontSize: 12.0,
               ),
             ),
           ],
@@ -52,23 +74,24 @@ class ActivityCardWidget extends StatelessWidget {
           textAlign: TextAlign.left,
         ),
 
-        // fim
         Row(
-          // mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: const [
-                Icon(MdiIcons.github, size: 20.0),
-                SizedBox(width: 4.0),
-                Text(
-                  'Acessar código fonte',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: AppColors.white,
+            Expanded(
+              child: Row(
+                children: const [
+                  Icon(MdiIcons.github, size: 20.0),
+                  SizedBox(width: 4.0),
+                  Flexible(
+                    child: Text(
+                      'Acessar código fonte',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.white,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             ElevatedButton(
               child: const Text(
