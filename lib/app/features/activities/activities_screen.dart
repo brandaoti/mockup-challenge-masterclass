@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mockup_challenge_masterclass/app/features/activities/card_service.dart';
-import 'package:mockup_challenge_masterclass/app/features/activities/components/activity_card_widget.dart';
 
-import '../../core/components/card_widget.dart';
+import '../../core/components/components.dart';
+import 'activities.dart';
 
 class ActivitiesScreen extends StatefulWidget {
   const ActivitiesScreen({
@@ -14,15 +13,15 @@ class ActivitiesScreen extends StatefulWidget {
 }
 
 class _ActivitiesScreenState extends State<ActivitiesScreen> {
-  final cardService = CardService();
+  final _service = ActivityCardService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: cardService.getCardItem.length,
+        itemCount: _service.getActivityItem.length,
         itemBuilder: (context, index) {
-          final item = cardService.getCardItem[index];
+          final item = _service.getActivityItem[index];
           return CardWidget(
             child: ActivityCardWidget(
               activityCardItem: item,

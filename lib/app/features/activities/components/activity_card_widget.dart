@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../core/core.dart';
-import '../model/activity_card_item.dart';
+import '../models/activity_card_item.dart';
 
 class ActivityCardWidget extends StatelessWidget {
   final ActivityCardItem activityCardItem;
@@ -22,10 +22,10 @@ class ActivityCardWidget extends StatelessWidget {
         // ! Icon, titule e quantidade exercicio
         Row(
           children: [
+            //! TODO, criar uma classe para as decorações
             Container(
               height: 36.0,
               width: 36.0,
-              //! TODO, criar uma classe para as decorações
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.primary,
@@ -37,41 +37,24 @@ class ActivityCardWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8.0),
             Expanded(
-              child: Text(
+              child: TextWidget(
                 activityCardItem.title,
-                // TODO, criar também no Textstyle
-                style: const TextStyle(
-                  color: AppColors.white,
-                  fontSize: 16.0,
-                ),
+                style: AppStyles.titleTextStyle,
               ),
             ),
             // Spacer(),
-            const Text(
-              'Exercicios:', //! Criar como função
-              style: TextStyle(
-                color: AppColors.white,
-                fontSize: 12.0,
-              ),
-            ),
-            const SizedBox(width: 8.0),
-            Text(
-              '${activityCardItem.quantity ?? 0}', //! Criar como função
-              style: const TextStyle(
-                color: AppColors.white,
-                fontSize: 12.0,
-              ),
+            TextWidget(
+              AppStrings.totalExercises(activityCardItem.totalExercises ?? 0),
+              style: AppStyles.sourceCodeTextStyle,
             ),
           ],
         ),
 
         // * Descrição
-        Text(
-          activityCardItem.subtitle,
-          style: const TextStyle(
-            color: AppColors.description,
-          ),
-          textAlign: TextAlign.left,
+        TextWidget(
+          activityCardItem.description,
+          style: AppStyles.descriptionTextStyle,
+          // textAlign: TextAlign.left,
         ),
 
         Row(
@@ -82,28 +65,20 @@ class ActivityCardWidget extends StatelessWidget {
                   Icon(MdiIcons.github, size: 20.0),
                   SizedBox(width: 4.0),
                   Flexible(
-                    child: Text(
-                      'Acessar código fonte',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: AppColors.white,
-                      ),
+                    child: TextWidget(
+                      AppStrings.sourceCode,
+                      style: AppStyles.sourceCodeTextStyle,
                     ),
                   ),
                 ],
               ),
             ),
             ElevatedButton(
-              child: const Text(
-                'Ver mais',
-                style: TextStyle(fontSize: 12.0, color: AppColors.white),
+              child: const TextWidget(
+                AppStrings.showMore,
+                style: AppStyles.showMoreTextStyle,
               ),
-              style: ElevatedButton.styleFrom(
-                primary: AppColors.primary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(23.0),
-                ),
-              ),
+              style: AppStyles.showMoreButtonStyle,
               onPressed: () {},
             ),
           ],
