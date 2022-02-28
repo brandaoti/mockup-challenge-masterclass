@@ -1,13 +1,13 @@
 class ActivityCardItem {
   final String image;
   final String title;
-  final String subtitle;
-  final int? quantity;
+  final String description;
+  final int? totalExercises;
 
   ActivityCardItem({
     required this.image,
     required this.title,
-    required this.subtitle,
-    this.quantity,
+    required this.description,
+    this.totalExercises,
   });
 }
