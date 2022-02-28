@@ -16,8 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> screens = [
     const ActivitiesScreen(),
-    const ActivitiesScreen(),
-    const ActivitiesScreen(),
+    Container(color: Colors.red),
+    Container(color: Colors.blue),
   ];
 
   void onChangePage(int newIndex) {
